@@ -9,7 +9,7 @@ namespace Soenneker.Utils.Paths.Resources;
 /// <summary>
 /// A utility library for retrieving the Resources path across environments
 /// </summary>
-public static class ResourcePathUtil
+public static class ResourcesPathUtil
 {
     /// <summary>
     /// Absolute path to the "Resources" folder across environments.
@@ -20,7 +20,7 @@ public static class ResourcePathUtil
     /// - Fallback: AppContext.BaseDirectory/Resources
     /// </summary>
     [Pure]
-    public static string GetResourcesPath()
+    public static string Get()
     {
         // Azure Functions/App Service → canonical mount
         if (RuntimeUtil.IsAzureFunction || RuntimeUtil.IsAzureAppService)
@@ -54,5 +54,5 @@ public static class ResourcePathUtil
     /// </summary>
     [Pure]
     public static string GetResourceFilePath(string fileName) =>
-        Path.Combine(GetResourcesPath(), fileName);
+        Path.Combine(Get(), fileName);
 }
